@@ -68,69 +68,69 @@ function getBrowser() {
 	// Chrome 1+
 	var isChrome = !!window.chrome && !!window.chrome.webstore;
 
-	if (isOpera == true) {
+	if (isOpera) {
 		browser = "Opera";
 	}
-	else if (isFirefox == true) {
+	else if (isFirefox) {
 		browser = "FireFox";
 	}
-	else if (isSafari == true) {
+	else if (isSafari) {
 		browser = "Safari";
 	}
-	else if (isIE == true) {
+	else if (isIE) {
 		browser = "Internet Explorer";
 	}
-	else if (isEdge == true) {
+	else if (isEdge) {
 		browser = "Microsoft Edge";
 	}
-	else if (isChrome == true) {
+	else if (isChrome) {
 		browser = "Chrome";
 	}
 
 	if (!isMobile()) {
-		if (/Windows/.test(navigator.userAgent) == true) {
+		if (/Windows/.test(navigator.userAgent)) {
 			os = "Windows";
-			if (/5.1;/.test(navigator.userAgent) == true) {
+			if (/5.1;/.test(navigator.userAgent)) {
 				os = os + " XP";
 			}
-			else if (/6.0;/.test(navigator.userAgent) == true) {
+			else if (/6.0;/.test(navigator.userAgent)) {
 				os = os + " Vista";
 			}
-			else if (/6.1;/.test(navigator.userAgent) == true) {
+			else if (/6.1;/.test(navigator.userAgent)) {
 				os = os + " 7";
 			}
-			else if (/6.2/.test(navigator.userAgent) == true) {
+			else if (/6.2/.test(navigator.userAgent)) {
 				os = os + " 8";
 			}
-			else if (/10.0;/.test(navigator.userAgent) == true) {
+			else if (/10.0;/.test(navigator.userAgent)) {
 				os = os + " 10";
 			}
 
-			if (/64/.test(navigator.userAgent) == true) {
+			if (/64/.test(navigator.userAgent)) {
 				os = os + " 64-bit";
 			}
 			else {
 				os = os + " 32-bit";
 			}
 		}
-		else if (/Macintosh/.test(navigator.userAgent) == true) {
+		else if (/Macintosh/.test(navigator.userAgent)) {
 			os = "Macintosh";
-			if (/OS X/.test(navigator.userAgent) == true) {
+			if (/OS X/.test(navigator.userAgent)) {
 				os = os + ' OS X';
 			}
 		}
 	}
 	else {
-		if (/Windows/.test(navigator.userAgent) == true) {
+		if (/Windows/.test(navigator.userAgent)) {
 			os = "Windows";
-			if (/Phone 8.0/.test(navigator.userAgent) == true) {
+			if (/Phone 8.0/.test(navigator.userAgent)) {
 				os = os + " Phone 8.0";
 			}
-			else if (/Phone 10.0/.test(navigator.userAgent) == true) {
+			else if (/Phone 10.0/.test(navigator.userAgent)) {
 				os = os + " Phone 10.0";
 			}
 		}
-		else if (/Android/.test(navigator.userAgent) == true) {
+		else if (/Android/.test(navigator.userAgent)) {
 			function AndroidVersion() {
 				if (/Android/.test(navigator.appVersion)) {
 					var v = (navigator.appVersion).match(/Android (\d+).(\d+)/);
@@ -141,7 +141,7 @@ function getBrowser() {
 			var ver = AndroidVersion();
 			os = ver[0];
 		}
-		else if (/iPhone;/.test(navigator.userAgent) == true) {
+		else if (/iPhone;/.test(navigator.userAgent)) {
 			function iOSversion() {
 				if (/iP(hone|od|ad)/.test(navigator.appVersion)) {
 					var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
@@ -152,7 +152,7 @@ function getBrowser() {
 			var ver = iOSversion();
 			os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
 		}
-		else if (/iPad;/.test(navigator.userAgent) == true) {
+		else if (/iPad;/.test(navigator.userAgent)) {
 			function iOSversion() {
 				if (/iP(hone|od|ad)/.test(navigator.appVersion)) {
 					var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
@@ -163,7 +163,7 @@ function getBrowser() {
 			var ver = iOSversion();
 			os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
 		}
-		else if (/BBd*/.test(navigator.userAgent) == true) {
+		else if (/BBd*/.test(navigator.userAgent)) {
 			os = "BlackBerry";
 		}
 	}
