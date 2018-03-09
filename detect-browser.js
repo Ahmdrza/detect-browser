@@ -41,12 +41,17 @@ var online;
 var cookie_enabled;
 var referrer;
 var IP;
+
+function isMobile() {
+	return /Mobi/.test(navigator.userAgent);
+}
+
 function getBrowser() {
 	referrer = (document.referrer == undefined) ? 'N/A' : document.referrer;
-	device = (/Mobi/.test(navigator.userAgent) == true) ? "Mobile" : "Desktop";
+
 
 	// Opera 8.0+
-	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	var isOpera = (window.opr && opr.addons) || window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
 	// Firefox 1.0+
 	var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -82,7 +87,7 @@ function getBrowser() {
 		browser = "Chrome";
 	}
 
-	if (device == "Desktop") {
+	if (!isMobile()) {
 		if (/Windows/.test(navigator.userAgent) == true) {
 			os = "Windows";
 			if (/5.1;/.test(navigator.userAgent) == true) {
@@ -115,7 +120,7 @@ function getBrowser() {
 			}
 		}
 	}
-	else if (device == "Mobile") {
+	else {
 		if (/Windows/.test(navigator.userAgent) == true) {
 			os = "Windows";
 			if (/Phone 8.0/.test(navigator.userAgent) == true) {
@@ -177,7 +182,7 @@ function getBrowser() {
 		timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 		screen_resolution: screen.width + ' x ' + screen.height,
 		cookie_enabled: navigator.cookieEnabled
-	}
+	};
 	return browser_data;
 }
 
