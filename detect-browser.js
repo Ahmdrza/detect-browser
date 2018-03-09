@@ -25,28 +25,30 @@
 // SOFTWARE.
 
 
-var browser_data = {};
-var languages = [];
-var user_agent;
-var browser;
-var os;
-var os_type;
-var os_bit;
-var device;
-var device_type;
-var timezone;
-var language;
-var screen_resolution;
-var online;
-var cookie_enabled;
-var referrer;
-var IP;
+
 
 function isMobile() {
 	return /Mobi/.test(navigator.userAgent);
 }
 
 function getBrowser() {
+	var browser_data = {};
+	var languages = [];
+	var user_agent;
+	var browser;
+	var os;
+	var os_type;
+	var os_bit;
+	var device;
+	var device_type;
+	var timezone;
+	var language;
+	var screen_resolution;
+	var online;
+	var cookie_enabled;
+	var referrer;
+	var IP;
+	
 	referrer = (document.referrer == undefined) ? 'N/A' : document.referrer;
 
 	// Opera 8.0+
