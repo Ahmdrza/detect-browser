@@ -25,7 +25,7 @@
 // SOFTWARE.
 
 
-var browser_data = [];
+var browser_data = {};
 var languages = [];
 var user_agent;
 var browser;
@@ -48,7 +48,6 @@ function isMobile() {
 
 function getBrowser() {
 	referrer = (document.referrer == undefined) ? 'N/A' : document.referrer;
-
 
 	// Opera 8.0+
 	var isOpera = (window.opr && opr.addons) || window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
