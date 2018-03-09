@@ -9,6 +9,8 @@
 </head>
 
 <body>
+	<button onclick="document.getElementById('browserInfo').innerHTML = JSON.stringify(getBrowser(), undefined, 2);">Get Browser</button>
+	<pre id="browserInfo"></pre>
 	<script src="./detect-browser.js"></script>
 </body>
 
