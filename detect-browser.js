@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 // detect-browser.js v0.1
 // Get Browser Data
@@ -31,26 +32,7 @@ function isMobile() {
 	return /Mobi/.test(navigator.userAgent);
 }
 
-function getBrowser() {
-	var browser_data = {};
-	var languages = [];
-	var user_agent;
-	var browser;
-	var os;
-	var os_type;
-	var os_bit;
-	var device;
-	var device_type;
-	var timezone;
-	var language;
-	var screen_resolution;
-	var online;
-	var cookie_enabled;
-	var referrer;
-	var IP;
-	
-	referrer = (document.referrer == undefined) ? 'N/A' : document.referrer;
-
+function getBrowserName() {
 	// Opera 8.0+
 	var isOpera = (window.opr && opr.addons) || window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
@@ -58,7 +40,9 @@ function getBrowser() {
 	var isFirefox = typeof InstallTrigger !== 'undefined';
 
 	// Safari 3.0+ "[object HTMLElementConstructor]" 
-	var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || isSafari.pushNotification);
+	var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
+		return p.toString() === "[object SafariRemoteNotification]";
+	})(!window['safari'] || isSafari.pushNotification);
 
 	// Internet Explorer 6-11
 	var isIE = /*@cc_on!@*/false || !!document.DOCUMENT_NODE;
@@ -70,65 +54,37 @@ function getBrowser() {
 	var isChrome = !!window.chrome && !!window.chrome.webstore;
 
 	if (isOpera) {
-		browser = "Opera";
+		return "Opera";
 	}
 	else if (isFirefox) {
-		browser = "FireFox";
+		return "FireFox";
 	}
 	else if (isSafari) {
-		browser = "Safari";
+		return "Safari";
 	}
 	else if (isIE) {
-		browser = "Internet Explorer";
+		return "Internet Explorer";
 	}
 	else if (isEdge) {
-		browser = "Microsoft Edge";
+		return "Microsoft Edge";
 	}
 	else if (isChrome) {
-		browser = "Chrome";
+		return "Chrome";
 	}
+}
 
-	if (!isMobile()) {
-		if (/Windows/.test(navigator.userAgent)) {
-			os = "Windows";
-			if (/5.1;/.test(navigator.userAgent)) {
-				os = os + " XP";
-			}
-			else if (/6.0;/.test(navigator.userAgent)) {
-				os = os + " Vista";
-			}
-			else if (/6.1;/.test(navigator.userAgent)) {
-				os = os + " 7";
-			}
-			else if (/6.2/.test(navigator.userAgent)) {
-				os = os + " 8";
-			}
-			else if (/10.0;/.test(navigator.userAgent)) {
-				os = os + " 10";
-			}
+function getBrowser() {
+	var browserData = {};
 
-			if (/64/.test(navigator.userAgent)) {
-				os = os + " 64-bit";
-			}
-			else {
-				os = os + " 32-bit";
-			}
-		}
-		else if (/Macintosh/.test(navigator.userAgent)) {
-			os = "Macintosh";
-			if (/OS X/.test(navigator.userAgent)) {
-				os = os + ' OS X';
-			}
-		}
-	}
-	else {
+
+	if (isMobile()) {
 		if (/Windows/.test(navigator.userAgent)) {
-			os = "Windows";
+			browserData.os = "Windows";
 			if (/Phone 8.0/.test(navigator.userAgent)) {
-				os = os + " Phone 8.0";
+				browserData.os += " Phone 8.0";
 			}
 			else if (/Phone 10.0/.test(navigator.userAgent)) {
-				os = os + " Phone 10.0";
+				browserData.os += " Phone 10.0";
 			}
 		}
 		else if (/Android/.test(navigator.userAgent)) {
@@ -140,7 +96,7 @@ function getBrowser() {
 			}
 
 			var ver = AndroidVersion();
-			os = ver[0];
+			browserData.os = ver[0];
 		}
 		else if (/iPhone;/.test(navigator.userAgent)) {
 			function iOSversion() {
@@ -151,7 +107,7 @@ function getBrowser() {
 			}
 
 			var ver = iOSversion();
-			os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
+			browserData.os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
 		}
 		else if (/iPad;/.test(navigator.userAgent)) {
 			function iOSversion() {
@@ -162,29 +118,61 @@ function getBrowser() {
 			}
 
 			var ver = iOSversion();
-			os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
+			browserData.os = "iOS " + ver[0] + "." + ver[1] + "." + ver[2];
 		}
 		else if (/BBd*/.test(navigator.userAgent)) {
-			os = "BlackBerry";
+			browserData.os = "BlackBerry";
+		}
+	}
+	else {
+		if (/Windows/.test(navigator.userAgent)) {
+			browserData.os = "Windows";
+			if (/5.1;/.test(navigator.userAgent)) {
+				browserData.os += " XP";
+			}
+			else if (/6.0;/.test(navigator.userAgent)) {
+				browserData.os += " Vista";
+			}
+			else if (/6.1;/.test(navigator.userAgent)) {
+				browserData.os += " 7";
+			}
+			else if (/6.2/.test(navigator.userAgent)) {
+				browserData.os += " 8";
+			}
+			else if (/10.0;/.test(navigator.userAgent)) {
+				browserData.os += " 10";
+			}
+
+			if (/64/.test(navigator.userAgent)) {
+				browserData.os += " 64-bit";
+			}
+			else {
+				browserData.os += " 32-bit";
+			}
+		}
+		else if (/Macintosh/.test(navigator.userAgent)) {
+			browserData.os = "Macintosh";
+			if (/OS X/.test(navigator.userAgent)) {
+				browserData.os += ' OS X';
+			}
 		}
 	}
 
-
-
-	browser_data = {
-		language: navigator.language,
-		languages: navigator.languages,
-		user_agent: navigator.userAgent,
-		browser: browser,
-		device: device,
-		referer: referrer,
-		os: os,
-		online: navigator.onLine,
-		timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-		screen_resolution: screen.width + ' x ' + screen.height,
-		cookie_enabled: navigator.cookieEnabled
+	browserData = {
+		...{
+			browser: getBrowserName(),
+			language: navigator.language,
+			languages: navigator.languages,
+			user_agent: navigator.userAgent,
+			device: device,
+			referrer: document.referrer || "N/A",
+			online: navigator.onLine,
+			timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+			screen_resolution: screen.width + ' x ' + screen.height,
+			cookie_enabled: navigator.cookieEnabled
+		}
 	};
-	return browser_data;
+	return browserData;
 }
 
 
