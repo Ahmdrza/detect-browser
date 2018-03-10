@@ -14,7 +14,7 @@
 		"type": "git",
 		"url": "git+https://github.com/Ahmdrza/detect-browser.git"
 	},
-	"author": "",
+	"author": "Ahmdrza",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/Ahmdrza/detect-browser/issues"

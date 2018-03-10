@@ -1,6 +1,6 @@
 // @ts-nocheck
 'use strict';
-// detect-browser.js v0.1
+// detect-browser.js v1.0.0
 // Get Browser Data
 
 // MIT License
