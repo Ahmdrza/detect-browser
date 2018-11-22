@@ -31,10 +31,6 @@ function isMobile() {
 }
 
 function getBrowserName() {
-	if (window.chrome) {
-		return 'Chrome';
-	}
-
 	// Opera 8.0+
 	if ((window.opr && window.opr.addons)
 		|| window.opera
@@ -55,13 +51,18 @@ function getBrowserName() {
 	}
 
 	// Internet Explorer 6-11
-	if (/* @cc_on!@*/false || document.DOCUMENT_NODE) {
+	if (/* @cc_on!@*/false || document.documentMode) {
 		return 'Internet Explorer';
 	}
 
 	// Edge 20+
-	if (window.styleMedia) {
+	if (!(document.documentMode) && window.StyleMedia) {
 		return 'Microsoft Edge';
+	}
+	
+	// Chrome
+	if (window.chrome) {
+		return 'Chrome';
 	}
 }
 
