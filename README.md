@@ -1,12 +1,12 @@
 # detect-browser
 A JavaScript library to detect browser properties like browser name, device, OS, referrer, timezone, screen resolution and much more. 
-# Documentation
+# How to use
 Add <code> <script type="text/javascript" src="detect-browser.js"></script> </code> at the top of your page. <br/>
 Add <code> <script type="text/javascript"> var info = getBrowser(); console.log(info);  </script>  </code>  
 
 It will print browser info in console
 
-# List of Properties
+# List of properties available
 
 <code> info.language                       // browser language e.g en-US </code>
 <br/>
