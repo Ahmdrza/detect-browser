@@ -4,7 +4,7 @@
 	"description": "A JavaScript library to detect browser properties like browser name, device, OS, referrer, timezone, screen resolution and much more. \r # Documentation\r Add <code> <script type=\"text/javascript\" src=\"detect-browser.js\"></script> </code> at the top of your page. <br/>\r Add <code> <script type=\"text/javascript\"> var info = getBrowser(); console.log(info);  </script>  </code>",
 	"main": "detect-browser.js",
 	"devDependencies": {
-		"eslint": "^4.18.2",
+		"eslint": "^8.39.0",
 		"eslint-config-google": "^0.9.1"
 	},
 	"scripts": {
